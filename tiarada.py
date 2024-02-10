@@ -72,13 +72,12 @@ def tirar_runas():
                     ¡Veamos qué tienen que decir las runas! \n""")
                 
                 for n in range(4):
-                    runa = f"runa_{n}"
-                    runa_cara = f"runa_cara_{n}"
-                    print(f"""Tu pasado fue la runa {mazo[tiradas[runa]][tiradas[runa_cara]]}""")
-                    runa, cara = tiradas.popitem()
-                    print(f"""Ahora vives bajo el influjo de {mazo[runa][cara]}""")
-                    runa, cara = tiradas.popitem()
-                    print(f"""Y tu futuro viene descrito con los designios de {mazo[runa][cara]}""")
+                    runa, cara = mazo.pop()
+                    print(f"""Tu pasado fue la runa {runa}{cara}""")
+                    runa, cara = mazo.pop()
+                    print(f"""Ahora vives bajo el influjo de {runa}{cara}""")
+                    runa, cara = mazo.pop()
+                    print(f"""Y tu futuro viene descrito con los designios de {runa}{cara}""")
             except:
                 print("Algo no salió bien.")
 
@@ -87,37 +86,59 @@ def tirar_runas():
         # Lanza 5 en configuración cardinales y centro
         elif peticion == "compleja":
             try:
-                runa_sur = random.randint(0, 14)
-                runa_cara_sur = random.randint(0, 1)
-                runa_nor = random.randint(0, 14)
-                runa_cara_nor = random.randint(0, 1)
-                runa_oes = random.randint(0, 14)
-                runa_cara_oes = random.randint(0, 1)
-                runa_est = random.randint(0, 14)
-                runa_cara_est = random.randint(0, 1)
-                runa_cen = random.randint(0, 14)
-                runa_cara_cen = random.randint(0, 1)
+                runa, cara = mazo.pop()
                 print(f"""\n Uuuh, ¿una tirada compleja? Necesitas entender exactamente qué ocurre con tu situación actual. Entiendo.
-                    ¡Bien! Pues la primera carta está al sur y es aquella sobre la que nos apoyamos. En este caso es {mazo[runa_sur][runa_cara_sur]}\n
-                    La siguiente es al norte y es el poder que vela por nosotros, el que nos cuida y ayuda. En tu caso, {mazo[runa_nor][runa_cara_nor]}\n
-                    Entiendo... \n 
-                    Ahora vienen las dificultades, los enemigos o aquello que está puesto en tu camino para oponerse a tus deseos y necesidades. {mazo[runa_oes][runa_cara_oes]}\n
-                    Pero no todo está en tu contra, tienes de tu lado a {mazo[runa_est][runa_cara_est]}\n
-                    Esto se acaba ya, la siguiente runa resume la tirada, las energías que actúan en tu presente, y en tu caso es {mazo[runa_cen][runa_cara_cen]}\n
-                        \n""")
+                    ¡Bien! Pues la primera carta está al sur y es aquella sobre la que nos apoyamos. En este caso es {runa}{cara}\n""")
+                runa, cara = mazo.pop()
+                print(f"""La siguiente es al norte y es el poder que vela por nosotros, el que nos cuida y ayuda. En tu caso, {runa}{cara}\n""")
+                runa, cara = mazo.pop()
+                print(f"""Entiendo... \n 
+                    Ahora vienen las dificultades, los enemigos o aquello que está puesto en tu camino para oponerse a tus deseos y necesidades. {runa}{cara}\n""")
+                runa, cara = mazo.pop()
+                print(f"""Pero no todo está en tu contra, tienes de tu lado a {runa}{cara}\n""")
+                runa, cara = mazo.pop()
+                print(f"""Esto se acaba ya, la siguiente runa resume la tirada, las energías que actúan en tu presente, y en tu caso es {runa}{cara}""")
                 
             except:
                 print("Algo no salió bien.")
 
         # PROFUNDA
         # Lanza la versión en X con 8 (2*arista) + 1 central
-        """ elif peticion == "profunda":
+        elif peticion == "profunda":
+            print("""Una tirada profunda, entiendo. Estas se leen situando las runas en forma de equis dejando una en el centro. Cada arista contiene dos cartas y traen información de partes distintas de tu realidad actual. """)
             try:
+                runa, cara = mazo.pop()
+                print(f"""{runa}{cara}\n""")
 
+                runa, cara = mazo.pop()
+                print(f"""{runa}{cara}\n""")
+
+                runa, cara = mazo.pop()
+                print(f"""{runa}{cara}\n""")
+
+                runa, cara = mazo.pop()
+                print(f"""{runa}{cara}\n""")
+
+                runa, cara = mazo.pop()
+                print(f"""{runa}{cara}\n""")
+
+                runa, cara = mazo.pop()
+                print(f"""{runa}{cara}\n""")
+                
+                runa, cara = mazo.pop()
+                print(f"""{runa}{cara}\n""")
+
+                runa, cara = mazo.pop()
+                print(f"""{runa}{cara}\n""")
+
+                runa, cara = mazo.pop()
+                print(f"""{runa}{cara}\n""")
 
             except:
                 print("Algo no salió bien.")
-        """
-    
+        
+
+        # Restauramos el mazo al original
+        mazo_original = mazo_modificado
 
 tirar_runas()
