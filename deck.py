@@ -1,4 +1,4 @@
-mazo = [("""BOSQUE, LA COMPAÑÍA
+deck = [("""BOSQUE, LA COMPAÑÍA
          Runa menor.
          Es la presencia de aliados o recursos a tu alrededor que parecen barrar el camino, pero no necesariamente lo hacen.""",
          """BOSQUE invertida, EL PANTANO
